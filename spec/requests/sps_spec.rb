@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe "sp" do
+  let(:base_title) { "Ruby on Rails Tutorial Sample App"  }
 
   describe "Home page" do
 
@@ -10,19 +11,23 @@ describe "sp" do
     end
      it "should have the title 'Home'" do
       visit '/sp/home'
-      expect(page).to have_title("Ruby on Rails Tutorial Sample App | Home")
+      expect(page).to have_title("#{base_title}")
+    end
+    it "should not have the title 'Home'" do
+      visit '/sp/home'
+      expect(page).not_to have_title('| Home')
     end
 
   end
 describe "Help page" do
 
-    it "should have the content 'Help'" do
+    it "should have the content  'Help'" do
       visit '/sp/help'
       expect(page).to have_content('Help')
     end
      it "should have the title 'Help'" do
       visit '/sp/help'
-      expect(page).to have_title("Ruby on Rails Tutorial Sample App | Help")
+      expect(page).to have_title("Help")
     end
 
   end
@@ -34,9 +39,22 @@ describe "Help page" do
     end
     it "should have the title 'About Us'" do
       visit '/sp/about'
-      expect(page).to have_title("Ruby on Rails Tutorial Sample App | About Us")
+      expect(page).to have_title("#{base_title} | About Us")
     end
 
   end
+  describe "Contact page" do
+
+    it "should have the content 'Contact'" do
+      visit '/sp/contact'
+      expect(page).to have_content('Contact')
+    end
+
+    it "should have the title 'Contact'" do
+      visit '/sp/contact'
+      expect(page).to have_title("#{base_title} | Contact")
+    end
+  end
+
 end
 
