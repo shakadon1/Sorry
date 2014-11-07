@@ -6,15 +6,15 @@ describe "sp" do
   describe "Home page" do
 
     it "should have the content 'Sample App'" do
-      visit '/sp/home'
+      visit ''
       expect(page).to have_content('Sample App')
     end
      it "should have the title 'Home'" do
-      visit '/sp/home'
+      visit ''
       expect(page).to have_title("#{base_title}")
     end
     it "should not have the title 'Home'" do
-      visit '/sp/home'
+      visit ''
       expect(page).not_to have_title('| Home')
     end
 
@@ -22,11 +22,11 @@ describe "sp" do
 describe "Help page" do
 
     it "should have the content  'Help'" do
-      visit '/sp/help'
+      visit '/help'
       expect(page).to have_content('Help')
     end
      it "should have the title 'Help'" do
-      visit '/sp/help'
+      visit '/help'
       expect(page).to have_title("Help")
     end
 
@@ -34,11 +34,11 @@ describe "Help page" do
   describe "About page" do
 
     it "should have the content 'About Us'" do
-      visit '/sp/about'
+      visit '/about'
       expect(page).to have_content('About Us')
     end
     it "should have the title 'About Us'" do
-      visit '/sp/about'
+      visit '/about'
       expect(page).to have_title("#{base_title} | About Us")
     end
 
@@ -46,12 +46,12 @@ describe "Help page" do
   describe "Contact page" do
 
     it "should have the content 'Contact'" do
-      visit '/sp/contact'
+      visit '/contact'
       expect(page).to have_content('Contact')
     end
 
     it "should have the title 'Contact'" do
-      visit '/sp/contact'
+      visit '/contact'
       expect(page).to have_title("#{base_title} | Contact")
     end
   end
