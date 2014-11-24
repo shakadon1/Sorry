@@ -1,1 +1,1 @@
-integration test not workings
+run bundle install for factory girl

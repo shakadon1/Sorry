@@ -1,5 +1,7 @@
 Sorry::Application.routes.draw do
+  resources :users
    root             'sp#home'
+   match '/signup',  to: 'users#new',            via: 'get'
   get 'help' => 'sp#help'
   get 'about' => 'sp#about'
   get 'contact' => 'sp#contact'

@@ -13,12 +13,7 @@ describe "sp" do
       visit ''
       expect(page).to have_title("#{base_title}")
     end
-    it "should not have the title 'Home'" do
-      visit ''
-      expect(page).not_to have_title('| Home')
-    end
-
-  end
+      end
 describe "Help page" do
 
     it "should have the content  'Help'" do
