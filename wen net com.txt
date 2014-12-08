@@ -1,1 +1,1 @@
-run bundle install for factory girl
+text field are too long so is d button
