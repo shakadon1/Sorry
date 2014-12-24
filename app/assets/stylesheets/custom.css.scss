@@ -5,7 +5,7 @@
 
 $gray-medium-light: #eaeaea;
 $grayLighter: #eaeaea;
-
+$grayLight: #aaa;
 @mixin box_sizing {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -183,5 +183,35 @@ input {
     &:last-child {
       border-bottom: 1px solid $grayLighter;
     }
+  }
+}
+/* microposts */
+.span8{
+  float: right;
+  margin: 10px 0 0 0;
+.microposts {
+  list-style: none;
+  margin: 10px 0 0 0;
+
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+}
+}
+.content {
+  display: block;
+}
+.timestamp {
+  color: $grayLight;
+}
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
   }
 }

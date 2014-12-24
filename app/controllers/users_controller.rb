@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
  before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
  before_action :correct_user,   only: [:edit, :update]
- before_action :admin_user,     only: :destroy
+ before_action :admin_user,     only: [:destroy]
 
 
    def index
@@ -9,15 +9,23 @@ class UsersController < ApplicationController
    end
 
    def new
+    if signed_in?
+      redirect_to root_url
+    else
   	@user = User.new
+   end
   end
   
   def show
   	@user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
   
   def create
     @user = User.new(user_params)    # Not the final implementation!
+   if signed_in?
+      redirect_to root_url
+  else 
     if @user.save
       # Handle a successful save.
        sign_in @user
@@ -26,6 +34,7 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
+   end 
   end
 
   def edit
@@ -42,9 +51,13 @@ class UsersController < ApplicationController
   end
 
   def destroy
+      if user.admin?
+      flash.now[:error] = 'You cant delete yourself'
+    else
     User.find(params[:id]).destroy
     flash[:success] = "User deleted."
     redirect_to users_url
+    end 
   end
 
      private
@@ -55,10 +68,6 @@ class UsersController < ApplicationController
     end
 
  # Before filters
-
-    def signed_in_user
-      redirect_to signin_url, notice: "Please sign in." unless signed_in?
-    end
 
     def correct_user
       @user = User.find(params[:id])
